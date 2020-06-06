@@ -3,6 +3,8 @@
 // protected 允许在类内及继承的子类中被调用被调用
 // private 允许在类内被调用
 
+// static 相当于把属性挂载到类上，使用的时候不需要new就可以使用，eg: Person.[static name]，不是访问类型属性
+
 // class Person {
 //   protected name: string ;
 //   public sayHi() {
