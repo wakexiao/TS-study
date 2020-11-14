@@ -27,8 +27,33 @@ class Demo {
   }
 }
 
-const demo1 = Demo.getInstance('tony')
-console.log(demo1.name) // 'tony'
-const demo2 = Demo.getInstance('job') /// 因为是单利模式，上面已经 new 过了，所以直接返回的是 tony
-console.log(demo2.name) // 'tony'
-console.log(demo1 === demo2) // true
+// const demo1 = Demo.getInstance('tony')
+// console.log(demo1.name) // 'tony'
+// const demo2 = Demo.getInstance('job') /// 因为是单利模式，上面已经 new 过了，所以直接返回的是 tony
+// console.log(demo2.name) // 'tony'
+// console.log(demo1 === demo2) // true
+
+
+function add({first, second}:{first: number, second: number}) {
+  return first + second
+}
+
+interface obj {first: number, second: number}
+
+function add1({first, second}:obj) {
+  return first + second
+}
+function add2({first, second}:obj) {
+  return first + second
+}
+var object1 = {
+  first: 1,
+  second: 2
+}
+
+// 类型断言  类型断言可以用来手动指定一个值的类型，即允许变量从一种类型更改为另一种类型。
+// 语法格式： <类型>值 || 值 as 类型
+var object2 = <obj> object1
+var object3 = object1 as obj
+console.log(object2)
+console.log(object3)
