@@ -1,0 +1,27 @@
+{
+  "name": "ts-study",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node ./src/crowller.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xxl197080/TS-study.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xxl197080/TS-study/issues"
+  },
+  "homepage": "https://github.com/xxl197080/TS-study#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.5",
+    "superagent": "^6.1.0"
+  },
+  "devDependencies": {
+    "@types/superagent": "^4.1.10"
+  }
+}
