@@ -1,5 +1,6 @@
 import fs from 'fs';
 import cheerio from 'cheerio';
+import {Analyzer} from './crowller'
 
 interface Music{
   cover: string,
@@ -14,8 +15,20 @@ interface Content{
   [propName: number]: Music[]
 }
 
-export default class DellAnalyzer{
-  getMusicInfo(html: string){
+// 1、单例类只能有一个实例
+// 2、单例类  必须自己创建自己的唯一实例
+// 2、单例类必须给其他所有对象提供这一实例
+export default class DellAnalyzer implements Analyzer{ // extends只能继承一个类，但implements可以实现多个接口, 展示还不理解 implements 用法
+  private constructor(){} // 将 constructor 属性设置成 private，外部就不能直接 new
+  private static instance: DellAnalyzer;
+  static getAnalyzer(){ // 使用单例模式 getAnalyzer需要使用static, static属性不需要new就可以直接在类上面使用
+    if(!DellAnalyzer.instance){
+      DellAnalyzer.instance = new DellAnalyzer();
+    }
+    return DellAnalyzer.instance
+  }
+
+  private getMusicInfo(html: string){
     // const $ = cheerio.load('<h2 class="title">Hello world</h2>');
     // $('h2').addClass('welcome')
     // const musicItem = $('.title');
@@ -42,7 +55,7 @@ export default class DellAnalyzer{
     return result;
   }
 
-  generateJsonContent(musicInfo: MusicResult, filePath: string){
+  private generateJsonContent(musicInfo: MusicResult, filePath: string){
     // 1、join是把各个path片段连接在一起， resolve把‘／’当成根目录
     // 2、join直接拼接字段，resolve解析路径并返回
     // const filePath1 = path.join(__dirname, '/data/music.json');
@@ -54,7 +67,7 @@ export default class DellAnalyzer{
     return contentJson;
   }
 
-  public analyze(html: string, filePath: string){
+  public analyze(html: string, filePath: string){ // public 属性需要 new了之后才能使用
     const musicInfo =  this.getMusicInfo(html);
     const contentJson = this.generateJsonContent(musicInfo, filePath);
     return JSON.stringify(contentJson);

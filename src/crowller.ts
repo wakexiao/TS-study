@@ -7,7 +7,7 @@ import LeeAnalyzer from './LeeAnalyzer'
 
 // nodejs 模块自带的五个参数，exports, require, module, __filename, __dirname
 
-interface Analyzer{
+export interface Analyzer{
   analyze: (html: string, filePath: string) => string
 }
 
@@ -35,5 +35,5 @@ class Crowller {
   }
 }
 
-const analyzer = new LeeAnalyzer()
+const analyzer = DellAnalyzer.getAnalyzer();
 new Crowller(analyzer);
