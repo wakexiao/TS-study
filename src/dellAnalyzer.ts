@@ -17,7 +17,7 @@ interface Content{
 
 // 1、单例类只能有一个实例
 // 2、单例类  必须自己创建自己的唯一实例
-// 2、单例类必须给其他所有对象提供这一实例
+// 3、单例类必须给其他所有对象提供这一实例
 export default class DellAnalyzer implements Analyzer{ // extends只能继承一个类，但implements可以实现多个接口, 展示还不理解 implements 用法
   private constructor(){} // 将 constructor 属性设置成 private，外部就不能直接 new
   private static instance: DellAnalyzer;
