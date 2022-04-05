@@ -22,7 +22,8 @@
   "homepage": "https://github.com/xxl197080/TS-study#readme",
   "dependencies": {
     "cheerio": "^1.0.0-rc.5",
-    "superagent": "^6.1.0"
+    "superagent": "^6.1.0",
+    "typescript": "^4.5.5"
   },
   "devDependencies": {
     "@types/superagent": "^4.1.10",
